@@ -1,3 +1,4 @@
+import os
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
@@ -7,9 +8,9 @@ import time
 import schedule
 from webdriver_manager.chrome import ChromeDriverManager
 
-# LinkedIn Credentials
-LINKEDIN_EMAIL = "your_email@example.com"
-LINKEDIN_PASSWORD = "your_password"
+# LinkedIn Credentials from GitHub Secrets
+LINKEDIN_EMAIL = os.getenv('LINKEDIN_EMAIL')  # GitHub Secret for email
+LINKEDIN_PASSWORD = os.getenv('LINKEDIN_PASSWORD')  # GitHub Secret for password
 
 # Configure Chrome options
 chrome_options = Options()
@@ -63,4 +64,3 @@ print("🔄 Running LinkedIn Bot...")
 while True:
     schedule.run_pending()
     time.sleep(60)  # Check every minute
-
